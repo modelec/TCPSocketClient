@@ -48,6 +48,9 @@ int main() {
 }
 ```
 
+### What that do
+The client start a thread that listen to the server and call the method handleMessage when a message is received.
+
 
 ### Trubleshooting
 If you have an error like when you start the program and it tell you that the Lib.so is not find you need to export :
