@@ -53,7 +53,7 @@ The client start a thread that listen to the server and call the method handleMe
 
 
 ### Trubleshooting
-If you have an error like when you start the program and it tell you that the Lib.so is not find you need to export :
+If you have an error when you start the program and it tell you that the Lib.so is not find you need to export :
 ```bash
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/lib
 ```
