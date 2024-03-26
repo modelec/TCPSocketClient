@@ -7,7 +7,6 @@ git clone https://github.com/modelec/TCPSocketClient.git
 cd TCPSocketClient
 mkdir build && cd build
 cmake ..
-make
 sudo make install
 ```
 
@@ -46,6 +45,21 @@ int main() {
 
     return 0;
 }
+```
+
+CMakeLists.txt
+```cmake
+cmake_minimum_required(VERSION 3.20)
+project(MyClient)
+
+set(CMAKE_CXX_STANDARD 17)
+
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(TCPSocket REQUIRED TCPSocket)
+
+add_executable(MyClient MyClient.cpp)
+
+target_link_libraries(MyClient TCPSocket)
 ```
 
 ### What that do

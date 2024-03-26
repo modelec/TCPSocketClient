@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
-project(TCPSocket VERSION 0.1.2 DESCRIPTION "TCP Socket" LANGUAGES CXX)
+project(TCPSocket VERSION 0.1.3 DESCRIPTION "TCP Socket" LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD 17)
 # Add the source files
 set(SOURCES
         src/TCPClient.cpp
+        src/TCPUtils.cpp
 )
 
 # Add the header files
