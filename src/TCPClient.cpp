@@ -1,6 +1,6 @@
 #include "TCPSocket/TCPClient.hpp"
 
-TCPClient::TCPClient(const char* serverIP, int port) {
+TCPClient::TCPClient(const char* serverIP, int port) : running(false) {
     clientSocket = socket(AF_INET, SOCK_STREAM, 0);
     if (clientSocket == -1) {
         std::cerr << "Socket creation failed" << std::endl;
@@ -52,6 +52,7 @@ TCPClient::~TCPClient() {
 }
 
 void TCPClient::start() {
+	running = true;
     std::thread receiveThread(&TCPClient::receiveMessages, this);
     receiveThread.detach();
 }
