@@ -12,12 +12,11 @@ class TCPClient {
     int clientSocket;
     sockaddr_in serverAddress;
     bool running;
-    //void (*callback)(const std::string& message);
 
 public:
-    TCPClient(const char* serverIP = "127.0.0.1", int port = 8080/*, void (*callback)(const std::string& message) = [](const std::string& message) { std::cout << message << std::endl; }*/);
+    TCPClient(const char* serverIP = "127.0.0.1", int port = 8080);
 
-    void sendMessage(const char* message);
+    void sendMessage(const char* message) const;
 
     void receiveMessages();
 
@@ -29,5 +28,4 @@ public:
 
     virtual void handleMessage(const std::string& message);
 
-    //void setCallback(void (*callback)(const std::string& message));
 };

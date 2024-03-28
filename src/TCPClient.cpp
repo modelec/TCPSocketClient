@@ -1,6 +1,6 @@
 #include "TCPSocket/TCPClient.hpp"
 
-TCPClient::TCPClient(const char* serverIP, int port/*, void (*callback)(const std::string& message)*/) : running(true)/*, callback(callback)*/ {
+TCPClient::TCPClient(const char* serverIP, int port) {
     clientSocket = socket(AF_INET, SOCK_STREAM, 0);
     if (clientSocket == -1) {
         std::cerr << "Socket creation failed" << std::endl;
@@ -21,7 +21,7 @@ TCPClient::TCPClient(const char* serverIP, int port/*, void (*callback)(const st
     }
 }
 
-void TCPClient::sendMessage(const char* message) {
+void TCPClient::sendMessage(const char* message) const {
     send(clientSocket, message, strlen(message), 0);
 }
 
@@ -60,7 +60,3 @@ void TCPClient::stop() {
     running = false;
     close(clientSocket);
 }
-
-/*void TCPClient::setCallback(void (*callback)(const std::string& message)) {
-    this->callback = callback;
-}*/

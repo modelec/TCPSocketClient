@@ -2,11 +2,13 @@
 
 #include <vector>
 #include <string>
+namespace TCPSocket
+{
+    bool startWith(const std::string& str, const std::string& start);
 
-inline bool startWith(const std::string& str, const std::string& start);
+    bool endsWith(const std::string& str, const std::string& end);
 
-inline bool endsWith(const std::string& str, const std::string& end);
+    bool contains(const std::string& str, const std::string& sub);
 
-inline bool contains(const std::string& str, const std::string& sub);
-
-inline std::vector<std::string> split(const std::string& str, const std::string& delimiter);
+    std::vector<std::string> split(const std::string& str, const std::string& delimiter);
+}

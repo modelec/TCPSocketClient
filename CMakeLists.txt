@@ -3,9 +3,6 @@ project(TCPSocket VERSION 0.1.3 DESCRIPTION "TCP Socket" LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Specify C++ Standard
-set(CMAKE_CXX_STANDARD 17)
-
 # Add the source files
 set(SOURCES
         src/TCPClient.cpp
