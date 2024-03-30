@@ -25,6 +25,10 @@ void TCPClient::sendMessage(const char* message) const {
     send(clientSocket, message, strlen(message), 0);
 }
 
+void TCPClient::sendMessage(const std::string& message) const {
+    send(clientSocket, message.c_str(), message.size(), 0);
+}
+
 void TCPClient::receiveMessages() {
     char buffer[1024] = {0};
     while (running) {

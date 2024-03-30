@@ -10,13 +10,15 @@
 
 class TCPClient {
     int clientSocket;
-    sockaddr_in serverAddress;
+    sockaddr_in serverAddress{};
     bool running;
 
 public:
-    TCPClient(const char* serverIP = "127.0.0.1", int port = 8080);
+    explicit TCPClient(const char* serverIP = "127.0.0.1", int port = 8080);
 
     void sendMessage(const char* message) const;
+
+    void sendMessage(const std::string& message) const;
 
     void receiveMessages();
 
