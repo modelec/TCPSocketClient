@@ -20,8 +20,19 @@ int main(int argc, char* argv[]) {
             client.stop();
             break;
         }
-
-        client.sendMessage(message.c_str());
+        if (message == "ready") {
+            client.sendMessage("lidar;strat;ready;1");
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            client.sendMessage("aruco;strat;ready;1");
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            client.sendMessage("arduino;strat;ready;1");
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            client.sendMessage("tirette;strat;ready;1");
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            client.sendMessage("servo_pot;strat;ready;1");
+        } else {
+            client.sendMessage(message);
+        }
     }
 
     return 0;
