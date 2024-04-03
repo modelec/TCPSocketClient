@@ -9,8 +9,10 @@
 #include <thread>
 
 class TCPClient {
+private:
     int clientSocket;
     sockaddr_in serverAddress{};
+protected:
     bool running;
 
 public:
@@ -22,9 +24,9 @@ public:
 
     void receiveMessages();
 
-    void start();
+    virtual void start();
 
-    void stop();
+    virtual void stop();
 
     virtual ~TCPClient();
 
