@@ -22,10 +22,18 @@ TCPClient::TCPClient(const char* serverIP, int port) : running(false) {
 }
 
 void TCPClient::sendMessage(const char* message) const {
-    send(clientSocket, message, strlen(message), 0);
+	if (!endWith(message, "\n")) {
+		std::string messageStr(message);
+		messageStr += "\n";
+	}
+
+    send(clientSocket, messageStr.c_str(), messageStr.size(), 0);
 }
 
 void TCPClient::sendMessage(const std::string& message) const {
+	if (!endWith(message, "\n")) {
+		message += "\n";
+	}
     send(clientSocket, message.c_str(), message.size(), 0);
 }
 
