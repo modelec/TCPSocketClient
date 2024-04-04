@@ -30,6 +30,16 @@ int main(int argc, char* argv[]) {
             client.sendMessage("tirette;strat;ready;1");
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
             client.sendMessage("servo_moteur;strat;ready;1");
+        } else if (message == "pong") {
+            client.sendMessage("lidar;ihm;pong;1");
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            client.sendMessage("aruco;ihm;pong;1");
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            client.sendMessage("arduino;ihm;pong;1");
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            client.sendMessage("tirette;ihm;pong;1");
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            client.sendMessage("servo_moteur;ihm;pong;1");
         } else {
             client.sendMessage(message);
         }
