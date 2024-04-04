@@ -1,5 +1,7 @@
 #include "TCPSocket/TCPClient.hpp"
 
+#include "TCPSocket/TCPUtils.hpp"
+
 TCPClient::TCPClient(const char* serverIP, int port) : running(false) {
     clientSocket = socket(AF_INET, SOCK_STREAM, 0);
     if (clientSocket == -1) {
@@ -22,19 +24,21 @@ TCPClient::TCPClient(const char* serverIP, int port) : running(false) {
 }
 
 void TCPClient::sendMessage(const char* message) const {
-	if (!endWith(message, "\n")) {
-		std::string messageStr(message);
-		messageStr += "\n";
-	}
+    std::string temp = message;
+    if (!TCPSocket::endsWith(temp, "\n")) {
+        temp += "\n";
+    }
 
-    send(clientSocket, messageStr.c_str(), messageStr.size(), 0);
+    send(clientSocket, temp.c_str(), temp.size(), 0);
 }
 
 void TCPClient::sendMessage(const std::string& message) const {
-	if (!endWith(message, "\n")) {
-		message += "\n";
+    std::string temp = message;
+    if (!TCPSocket::endsWith(temp, "\n")) {
+		temp += "\n";
 	}
-    send(clientSocket, message.c_str(), message.size(), 0);
+
+    send(clientSocket, temp.c_str(), temp.size(), 0);
 }
 
 void TCPClient::receiveMessages() {
@@ -42,7 +46,10 @@ void TCPClient::receiveMessages() {
     while (running) {
         ssize_t valread = recv(clientSocket, buffer, sizeof(buffer), 0);
         if (valread > 0) {
-            handleMessage(buffer);
+            std::vector<std::string> messages = TCPSocket::split(buffer, "\n");
+            for (const std::string& message : messages) {
+                handleMessage(message);
+            }
             memset(buffer, 0, sizeof(buffer)); // Clear buffer
         } else if (valread == 0) {
             std::cerr << "Connection closed by server" << std::endl;
