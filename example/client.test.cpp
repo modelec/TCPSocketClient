@@ -29,7 +29,7 @@ int main(int argc, char* argv[]) {
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
             client.sendMessage("tirette;strat;ready;1");
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
-            client.sendMessage("servo_pot;strat;ready;1");
+            client.sendMessage("servo_moteur;strat;ready;1");
         } else {
             client.sendMessage(message);
         }
