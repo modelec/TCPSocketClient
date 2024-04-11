@@ -46,7 +46,3 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
-
-bool TCPClient::shouldStop() const {
-    return !running;
-}
