@@ -32,4 +32,5 @@ public:
 
     virtual void handleMessage(const std::string& message);
 
+    bool shouldStop() const;
 };
