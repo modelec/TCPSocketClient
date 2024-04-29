@@ -14,7 +14,6 @@ int main(int argc, char* argv[]) {
     if (argc >= 3) {
         loggerMode = TCPSocket::contains(argv[2], "logger");
     }
-    std::cout << "Launching in logger mode? " << (loggerMode ? "Yes" : "No") << std::endl;
 
     TCPClient client("127.0.0.1", port); // Replace "127.0.0.1" with the IP address of your server and 8080 with the port number
 
