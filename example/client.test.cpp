@@ -1,4 +1,5 @@
 #include <TCPSocket/TCPClient.hpp>
+#include <TCPSocket/TCPUtils.hpp>
 #include <unistd.h>
 
 int main(int argc, char* argv[]) {
@@ -11,8 +12,7 @@ int main(int argc, char* argv[]) {
     bool loggerMode = false;
 
     if (argc >= 3) {
-        std::cout << "argv[2] = " << argv[2] << std::endl;
-        loggerMode = (argv[2] == "logger");
+        loggerMode = TCPSocket::contains(argv[2], "logger");
     }
     std::cout << "Launching in logger mode? " << (loggerMode ? "Yes" : "No") << std::endl;
 
