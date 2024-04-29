@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
 
     client.start();
 
-    while (true) {
+    while (!client.shouldStop()) {
         std::string message;
         std::cin >> message;
 
