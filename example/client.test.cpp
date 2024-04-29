@@ -13,7 +13,7 @@ int main(int argc, char* argv[]) {
 
     while (true) {
         std::string message;
-        std::getline(std::cin, message);
+        std::cin >> message;
 
         if (message == "quit") {
             client.stop();
