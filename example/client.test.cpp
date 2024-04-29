@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
     bool loggerMode = false;
 
     if (argc >= 3) {
-        loggerMode = std::stoi(argv[2]);
+        loggerMode = (argv[2] == "logger");
     }
 
     TCPClient client("127.0.0.1", port); // Replace "127.0.0.1" with the IP address of your server and 8080 with the port number
