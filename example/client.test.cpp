@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
             usleep(500'000);
         } else {
             std::string message;
-            std::cin >> message;
+            std::getline(std::cin, message);
 
             if (message == "quit") {
                 client.stop();
