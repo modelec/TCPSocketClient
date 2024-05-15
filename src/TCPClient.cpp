@@ -2,7 +2,7 @@
 
 #include "TCPSocket/TCPUtils.hpp"
 
-TCPClient::TCPClient(const char* serverIP, int port) : running(false) {
+TCPClient::TCPClient(const char* serverIP, int port) : running(false), _stoped(false) {
     clientSocket = socket(AF_INET, SOCK_STREAM, 0);
     if (clientSocket == -1) {
         std::cerr << "Socket creation failed" << std::endl;
@@ -77,9 +77,10 @@ void TCPClient::start() {
 }
 
 void TCPClient::stop() {
-    if (running) {
+    if (!_stoped) {
         running = false;
         close(clientSocket);
+        _stoped = true;
     }
 }
 

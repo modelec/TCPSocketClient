@@ -15,6 +15,8 @@ private:
 protected:
     bool running;
 
+    bool _stoped;
+
 public:
     explicit TCPClient(const char* serverIP = "127.0.0.1", int port = 8080);
 
