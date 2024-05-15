@@ -77,8 +77,10 @@ void TCPClient::start() {
 }
 
 void TCPClient::stop() {
-    running = false;
-    close(clientSocket);
+    if (running) {
+        running = false;
+        close(clientSocket);
+    }
 }
 
 bool TCPClient::shouldStop() const {
